@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - Quiz Game</title>
+  
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Game</title>
+    <style>
+        /* CSS styling */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #E8EBE4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: #D2D5DD;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        h1 {
+            color: #798071;
+        }
+        #question {
+            margin-bottom: 20px;
+        }
+        button {
+            margin: 5px;
+            padding: 10px 20px;
+            border: none;
+            background-color: #999AC6;
+            color: white;
+            font-size: 18px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #798071;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Quiz Game</h1>
+        <div id="question"></div>
+        <button onclick="checkAnswer(true)">True</button>
+        <button onclick="checkAnswer(false)">False</button>
+        <p>Score: <span id="score">0</span></p>
+    </div>
+
+    <script>
+        // Quiz questions and answers
+        const questions = [
+            { question: "HTML stands for Hyper Text Markup Language.", answer: true },
+            { question: "CSS stands for Computer Style Sheets.", answer: false },
+            { question: "JavaScript is a server-side scripting language.", answer: false },
+            { question: "jQuery is a JavaScript library.", answer: true },
+            { question: "Bootstrap is a CSS framework.", answer: true }
+        ];
+
+        let currentQuestionIndex = 0;
+        let score = 0;
+
+        // Function to display the current question
+        function displayQuestion() {
+            document.getElementById('question').textContent = questions[currentQuestionIndex].question;
+        }
+
+        // Function to check the user's answer
+        function checkAnswer(userAnswer) {
+            if (userAnswer === questions[currentQuestionIndex].answer) {
+                score++;
+                document.getElementById('score').textContent = score;
+            }
+
+            // Move to the next question
+            currentQuestionIndex++;
+            if (currentQuestionIndex < questions.length) {
+                displayQuestion();
+            } else {
+                alert('Quiz completed! Your final score is ' + score);
+            }
+        }
+
+        // Display the first question when the page loads
+        window.onload = displayQuestion;
+    </script>
+</body>
+</html>
+<!-- partial -->
+  
+</body>
+</html>
